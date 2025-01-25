@@ -15,10 +15,14 @@ public class PlayerInputs : MonoBehaviour
         _changeTime = GetComponent<ChangeTime>();
     }
 
-    public void OnMove(Vector2 values)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Vector3 movement = new Vector3(values.x, 1.0f, values.y);
-        _characterController.Move(movement);
+        if (context.performed)
+        {
+            Vector2 values = context.ReadValue<Vector2>();
+            Vector3 movement = new Vector3(values.x, 0, values.y);
+            _characterController.Move(movement);
+        }
     }
     public void OnLook(Vector2 values)
     {
@@ -26,7 +30,7 @@ public class PlayerInputs : MonoBehaviour
     }
     public void OnJump()
     {
-
+        //_characterController.velocity
     }
     public void OnPause()
     {
@@ -39,13 +43,23 @@ public class PlayerInputs : MonoBehaviour
             _isPause = true;
         }
     }
-    public void OnAddTime()
+    public void OnAddTime(InputAction.CallbackContext context)
     {
-        _changeTime.OnChangeTime(1);   
+        if (context.performed)
+        {
+            Debug.Log("Add Time");
+            _changeTime.OnChangeTime(1);
+        }
+        
     }
-    public void OnRemoveTime()
+    public void OnRemoveTime(InputAction.CallbackContext context)
     {
-        _changeTime.OnChangeTime(-1);
+        if (context.performed)
+        {
+            Debug.Log("Remove Time");
+
+            _changeTime.OnChangeTime(-1);
+        }
     }
     public void OnReadNoteBook(int layerIndex)
     {
