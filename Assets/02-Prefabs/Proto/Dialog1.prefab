@@ -59,7 +59,12 @@ MonoBehaviour:
   - 40
   - 40
   _dialogsColor: 000000000000000001000000
+  _dialogsSound:
+  - Dialog1.1
+  - Dialog1.2
+  - Dialog1.3
   _dialogstextColor:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0.0753932, g: 0, b: 1, a: 0}
   _textMeshPro: {fileID: 0}
+  _playSounds: {fileID: 0}

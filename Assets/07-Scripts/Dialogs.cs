@@ -8,10 +8,14 @@ public class Dialogs : MonoBehaviour
     [SerializeField] List<string> _dialogs = new List<string>();
     [SerializeField] List<float> _dialogsTime = new List<float>();
     [SerializeField] List<float> _dialogsSize = new List<float>();
-
     [SerializeField] List<int> _dialogsColor = new List<int>();
+    [SerializeField] List<string> _dialogsSound = new List<string>();
+
     [SerializeField] List<Color> _dialogstextColor = new List<Color>();
     [SerializeField] private TextMeshProUGUI _textMeshPro;
+    [SerializeField] private PlaySounds _playSounds;
+
+
     private void Start()
     {
         StartCoroutine(ReadDialogs());
@@ -26,6 +30,7 @@ public class Dialogs : MonoBehaviour
             _textMeshPro.text = _dialogs[i];
             _textMeshPro.color = _dialogstextColor[_dialogsColor[i]];
             _textMeshPro.fontSize = _dialogsSize[i];
+            _playSounds.PlaySound(_dialogsSound[i]);
             yield return new WaitForSeconds(_dialogsTime[i]);
         }
         _textMeshPro.gameObject.SetActive(false);
