@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ChangeTime : MonoBehaviour
 {
-    private int _actualTime = 2;
-    private int _newTime = 0;
-    [SerializeField] List<GameObject> _objectFirstTime = new List<GameObject>();
-    [SerializeField] List<GameObject> _objectSecondTime = new List<GameObject>();
-    [SerializeField] List<GameObject> _objectThirdTime = new List<GameObject>();
-    [SerializeField] List<GameObject> _objectFourthTime = new List<GameObject>();
-    [SerializeField] List<GameObject> _objectFifthTime = new List<GameObject>();
+    [SerializeField] private int _actualTime = 2;
+    [SerializeField] private int _oldTime = 1;
+    [SerializeField] private InteractableTimeObject _interactableTimeObject;
+
+    [SerializeField] List<GameObject> _objectEnviroFirst = new List<GameObject>();
+    [SerializeField] List<GameObject> _objectEnviroSecond = new List<GameObject>();
+    [SerializeField] List<GameObject> _objectEnviroThird = new List<GameObject>();
+    [SerializeField] List<GameObject> _objectEnviroFourth = new List<GameObject>();
+    [SerializeField] List<GameObject> _objectEnviroFifth = new List<GameObject>();
     public int ActualTime
     {
         get { return _actualTime; }
@@ -22,8 +24,14 @@ public class ChangeTime : MonoBehaviour
     }
     public void OnChangeTime(int value)
     {
+        //Debug.Log($"Change time of {_actualTime} to {_actualTime+value}");
         _actualTime += value;
-       
+        //Debug.Log($"Before Fonction, actual time = {_actualTime}");
+
+        _interactableTimeObject.ChangePositionInfo(_actualTime - value,_actualTime);
+        _interactableTimeObject.ChangeRotationInfo(_actualTime - value,_actualTime);
+        //Debug.Log($"After Fonction, actual time = {_actualTime}");
+
         switch (_actualTime)
         {
             case 0:
@@ -41,23 +49,26 @@ public class ChangeTime : MonoBehaviour
             case 6:
                 _actualTime = 5; break;
         }
-        if (_actualTime != _newTime)
+
+        if (_actualTime != _oldTime)
         {
-            ChangeAssets();
+            _oldTime = _actualTime;
+            ChangeAssets(value);
+            _interactableTimeObject.ChangePosition(_actualTime);
+            _interactableTimeObject.ChangeRotation(_actualTime);
         }
 
     }
-    public void ChangeAssets()
+    public void ChangeAssets(int value)
     {
         switch (_actualTime)
         {
             case 1:
-                _newTime = 1;
                 ObjectFirstTime(true);
                 ObjectSecondTime(false);
                 break;
             case 2:
-                if (_actualTime < _newTime)
+                if (value<=0)
                 {
                     ObjectSecondTime(true);
                     ObjectThirdTime(false);
@@ -67,10 +78,9 @@ public class ChangeTime : MonoBehaviour
                     ObjectSecondTime(true);
                     ObjectFirstTime(false);
                 }
-                _newTime = 2; 
                 break;
             case 3:
-                if (_actualTime < _newTime)
+                if (value <= 0)
                 {
                     ObjectThirdTime(true);
                     ObjectFourthTime(false);
@@ -80,10 +90,9 @@ public class ChangeTime : MonoBehaviour
                     ObjectThirdTime(true);
                     ObjectSecondTime(false);
                 }
-                _newTime = 3; 
                 break;
             case 4:
-                if (_actualTime < _newTime)
+                if (value <= 0)
                 {
                     ObjectFourthTime(true);
                     ObjectFifthTime(false);
@@ -93,11 +102,9 @@ public class ChangeTime : MonoBehaviour
                     ObjectFourthTime(true);
                     ObjectThirdTime(false);
                 }
-                _newTime = 4;
 
                 break;
             case 5:
-                _newTime = 5;
                 ObjectFifthTime(true);
                 ObjectFourthTime(false);
                 break;
@@ -108,16 +115,16 @@ public class ChangeTime : MonoBehaviour
         //Debug.Log("ObjectFirstTime " + value);
         if (value) 
         {
-            for (int i = 0; i < _objectFirstTime.Capacity; i++)
+            for (int i = 0; i < _objectEnviroFirst.Capacity; i++)
             {
-                _objectFirstTime[i].gameObject.SetActive(true);
+                _objectEnviroFirst[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 0; i < _objectFirstTime.Count; i++)
+            for (int i = 0; i < _objectEnviroFirst.Count; i++)
             {
-                _objectFirstTime[i].gameObject.SetActive(false);
+                _objectEnviroFirst[i].gameObject.SetActive(false);
             }
         }
 
@@ -128,16 +135,16 @@ public class ChangeTime : MonoBehaviour
     {
         if (value)
         {
-            for (int i = 0; i < _objectSecondTime.Count; i++)
+            for (int i = 0; i < _objectEnviroSecond.Count; i++)
             {
-                _objectSecondTime[i].gameObject.SetActive(true);
+                _objectEnviroSecond[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 0; i < _objectSecondTime.Count; i++)
+            for (int i = 0; i < _objectEnviroSecond.Count; i++)
             {
-                _objectSecondTime[i].gameObject.SetActive(false);
+                _objectEnviroSecond[i].gameObject.SetActive(false);
             }
         }
     }
@@ -145,16 +152,16 @@ public class ChangeTime : MonoBehaviour
     {
         if (value)
         {
-            for (int i = 0; i < _objectThirdTime.Count; i++)
+            for (int i = 0; i < _objectEnviroThird.Count; i++)
             {
-                _objectThirdTime[i].gameObject.SetActive(true);
+                _objectEnviroThird[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 0; i < _objectThirdTime.Count; i++)
+            for (int i = 0; i < _objectEnviroThird.Count; i++)
             {
-                _objectThirdTime[i].gameObject.SetActive(false);
+                _objectEnviroThird[i].gameObject.SetActive(false);
             }
         }
     }
@@ -162,16 +169,16 @@ public class ChangeTime : MonoBehaviour
     {
         if (value)
         {
-            for (int i = 0; i < _objectFourthTime.Count; i++)
+            for (int i = 0; i < _objectEnviroFourth.Count; i++)
             {
-                _objectFourthTime[i].gameObject.SetActive(true);
+                _objectEnviroFourth[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 0; i < _objectFourthTime.Count; i++)
+            for (int i = 0; i < _objectEnviroFourth.Count; i++)
             {
-                _objectFourthTime[i].gameObject.SetActive(false);
+                _objectEnviroFourth[i].gameObject.SetActive(false);
             }
         }
     }
@@ -179,16 +186,16 @@ public class ChangeTime : MonoBehaviour
     {
         if (value)
         {
-            for (int i = 0; i < _objectFifthTime.Count; i++)
+            for (int i = 0; i < _objectEnviroFifth.Count; i++)
             {
-                _objectFifthTime[i].gameObject.SetActive(true);
+                _objectEnviroFifth[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 0; i < _objectFifthTime.Count; i++)
+            for (int i = 0; i < _objectEnviroFifth.Count; i++)
             {
-                _objectFifthTime[i].gameObject.SetActive(false);
+                _objectEnviroFifth[i].gameObject.SetActive(false);
             }
         }
     }
