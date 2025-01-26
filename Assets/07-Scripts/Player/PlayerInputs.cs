@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using static UnityEngine.Timeline.AnimationPlayableAsset;
 
 public class PlayerInputs : MonoBehaviour
 {
-    private ChangeTime _changeTime;
+    [SerializeField]  private ChangeTime _changeTime;
+    private Interact _interact;
 
     private bool _isPause = false;
 
@@ -18,13 +20,15 @@ public class PlayerInputs : MonoBehaviour
 
     private Rigidbody _rigidbody;
     [SerializeField, Min(0f)] private float jumpForce = 10f;
-
     bool _jumpInput;
 
-    public void Start()
+    public void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
         _changeTime = GetComponent<ChangeTime>();
         _rigidbody = GetComponent<Rigidbody>();
+        _interact = GetComponent<Interact>();
     }
 
     private void Update()
@@ -75,26 +79,23 @@ public class PlayerInputs : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-
+        _interact.Interacted = true;
     }
 
     public void OnAddTime(InputAction.CallbackContext context)
     {
-        //if (context.performed)
-        //{
-        //    Debug.Log("Add Time");
-        //    _changeTime.OnChangeTime(1);
-        //}
+        if (context.performed)
+        {
+            _changeTime.OnChangeTime(1);
+        }
     }
 
     public void OnRemoveTime(InputAction.CallbackContext context)
     {
-        //if (context.performed)
-        //{
-        //    Debug.Log("Remove Time");
-
-        //    _changeTime.OnChangeTime(-1);
-        //}
+        if (context.performed)
+        {
+            _changeTime.OnChangeTime(-1);
+        }
     }
 
     public void OnReadNoteBook(InputAction.CallbackContext context)
