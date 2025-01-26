@@ -1334,6 +1334,96 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog
       objectReference: {fileID: 0}
+    - target: {fileID: 2960716481528406775, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: m_text
+      value: dfghuhjijhbvhjijhbhbhj
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960716481528406775, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960716481528406775, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960716481528406775, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960716481528406775, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogsColor.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogsColor.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogsColor.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogsColor.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[0].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[0].b
+      value: 0.1544589
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[0].g
+      value: 0.1544589
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[0].r
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[1].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[1].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[1].g
+      value: 0.05708027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673403979572172550, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
+        type: 3}
+      propertyPath: _dialogstextColor.Array.data[1].r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6684983587458240909, guid: 979c18e1f3aa5ad4f954c2032a2a0798,
         type: 3}
       propertyPath: m_LocalPosition.x
