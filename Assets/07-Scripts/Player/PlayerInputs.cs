@@ -30,7 +30,7 @@ public class PlayerInputs : MonoBehaviour
     private void Update()
     {
         _movement = ((_movementReference.transform.position - transform.position) * _speed) * Time.deltaTime;
-        _rigidbody.position += _movement;
+        transform.position += _movement;
         transform.LookAt(new Vector3(_lookAtReference.transform.position.x, transform.position.y, _lookAtReference.transform.position.z));
 
         if (_jumpInput)
