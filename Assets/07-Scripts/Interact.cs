@@ -10,6 +10,7 @@ public class Interact : MonoBehaviour
     [SerializeField] private GameObject _intercatedObject;
 
     [SerializeField] private bool _interacted = false;
+    private bool _haveAccesCard = false;
     public bool Interacted
     {
         get { return _interacted; } set { _interacted = value; }
@@ -19,26 +20,24 @@ public class Interact : MonoBehaviour
         if (other.gameObject.layer == _accesCardLayer)
         {
             _intercatedObject = other.gameObject;
-            AccesCard();
         }
         if (other.gameObject.layer == _buttonCardLayer)
         {
             _intercatedObject = other.gameObject;
-            ButtonCard();
         }
     }
-    private void AccesCard()
+    public void Interaction()
     {
-        if (_interacted)
+        if (_intercatedObject != null) 
         {
-            
-        }
-    }
-    private void ButtonCard()
-    {
-        if (_interacted)
-        {
+            if (_intercatedObject.layer == _buttonCardLayer)
+            {
 
+            }
+            else if (_intercatedObject.layer == _buttonCardLayer)
+            {
+                _haveAccesCard = true;
+            }
         }
     }
 }

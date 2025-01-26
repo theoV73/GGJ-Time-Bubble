@@ -6,7 +6,7 @@ public class ChangeTime : MonoBehaviour
 {
     [SerializeField] private int _actualTime = 2;
     [SerializeField] private int _oldTime = 1;
-    [SerializeField] private InteractableTimeObject _interactableTimeObject;
+    [SerializeField] private List<InteractableTimeObject> _interactableTimeObject = new List<InteractableTimeObject>();
 
     [SerializeField] List<GameObject> _objectEnviroFirst = new List<GameObject>();
     [SerializeField] List<GameObject> _objectEnviroSecond = new List<GameObject>();
@@ -28,8 +28,11 @@ public class ChangeTime : MonoBehaviour
         _actualTime += value;
         //Debug.Log($"Before Fonction, actual time = {_actualTime}");
 
-        _interactableTimeObject.ChangePositionInfo(_actualTime - value,_actualTime);
-        _interactableTimeObject.ChangeRotationInfo(_actualTime - value,_actualTime);
+        for (int i = 0; i < _interactableTimeObject.Capacity; i++)
+        {
+            _interactableTimeObject[i].ChangePositionInfo(_actualTime - value, _actualTime);
+            _interactableTimeObject[i].ChangeRotationInfo(_actualTime - value, _actualTime);
+        }
         //Debug.Log($"After Fonction, actual time = {_actualTime}");
 
         switch (_actualTime)
@@ -54,8 +57,11 @@ public class ChangeTime : MonoBehaviour
         {
             _oldTime = _actualTime;
             ChangeAssets(value);
-            _interactableTimeObject.ChangePosition(_actualTime);
-            _interactableTimeObject.ChangeRotation(_actualTime);
+            for (int i = 0; i < _interactableTimeObject.Capacity; i++)
+            {
+                _interactableTimeObject[i].ChangePosition(_actualTime);
+                _interactableTimeObject[i].ChangeRotation(_actualTime);
+            }
         }
 
     }
