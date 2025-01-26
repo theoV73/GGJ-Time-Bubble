@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] private LayerMask _accesCardLayer;
-    [SerializeField] private LayerMask _buttonCardLayer;
+    [SerializeField] private string _tag;
 
     [SerializeField] private GameObject _intercatedObject;
 
     [SerializeField] private bool _interacted = false;
-    private bool _haveAccesCard = false;
-    public bool Interacted
-    {
-        get { return _interacted; } set { _interacted = value; }
-    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == _accesCardLayer)
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.tag == _tag)
         {
             _intercatedObject = other.gameObject;
         }
-        if (other.gameObject.layer == _buttonCardLayer)
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject ==  _intercatedObject) 
         {
-            _intercatedObject = other.gameObject;
+            _intercatedObject = null;
         }
     }
     public void Interaction()
     {
         if (_intercatedObject != null) 
         {
-            if (_intercatedObject.layer == _buttonCardLayer)
+            if (_intercatedObject.TryGetComponent<Button>(out Button button))
             {
-
+                button.OpenDoor();
             }
-            else if (_intercatedObject.layer == _buttonCardLayer)
+            else if (_intercatedObject.TryGetComponent<Dialogs>(out Dialogs dialog))
             {
-                _haveAccesCard = true;
+                dialog.StartDialog();
             }
         }
     }

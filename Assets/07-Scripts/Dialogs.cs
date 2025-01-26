@@ -12,7 +12,7 @@ public class Dialogs : MonoBehaviour
     [SerializeField] List<int> _dialogsColor = new List<int>();
     [SerializeField] List<Color> _dialogstextColor = new List<Color>();
     [SerializeField] private TextMeshProUGUI _textMeshPro;
-    private void Start()
+    public void StartDialog()
     {
         StartCoroutine(ReadDialogs());
     }
